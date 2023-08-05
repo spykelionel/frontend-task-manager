@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Todo = () => {
+  const baseURL = "https://task-manager-e3rz.onrender.com/api/v1/tasks";
   const [showForm, setshowform] = useState(true);
   const [showNew, setshowNew] = useState(true);
   const [showDelete, setshowDelete] = useState(true);
@@ -24,14 +25,14 @@ const Todo = () => {
     setshowList(true);
     async function fetchData() {
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/v1/tasks", {
+        const response = await fetch(baseURL, {
           headers: {
             "Content-Type": "application/json",
           },
         });
         const data = await response.json();
-        setitems(data)
-       
+        setitems(data);
+
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -89,11 +90,11 @@ const Todo = () => {
           });
           const data = await response.json();
           //   localStorage.setItem("newID", data.id);
-        //   const allinputTitle = {
-        //     id: data.id,
-        //     name: data.title,
-        //     description: data.descriptionr,
-        //   };
+          //   const allinputTitle = {
+          //     id: data.id,
+          //     name: data.title,
+          //     description: data.descriptionr,
+          //   };
           console.log(data);
           setitems([data, ...items]);
           console.log(data);
@@ -118,7 +119,7 @@ const Todo = () => {
     async function deleteData() {
       try {
         const response = await fetch(
-          `http://127.0.0.1:5000/api/v1/tasks/${index}`,
+          `${baseURL}/${index}`,
           {
             method: "Delete",
             headers: {
@@ -149,7 +150,7 @@ const Todo = () => {
     async function editData() {
       try {
         const response = await fetch(
-          `http://127.0.0.1:5000/api/v1/tasks/${id}`,
+          `${baseURL}/${id}`,
           {
             method: "Put",
             headers: {
@@ -163,10 +164,7 @@ const Todo = () => {
         );
         const data = await response.json();
         // handleDelete(data.id)
-        setitems([
-            ...items,
-            data
-        ])
+        setitems([...items, data]);
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -179,7 +177,7 @@ const Todo = () => {
   //   EDIT
   const handleEdit = (id) => {
     window.localStorage.setItem("id", id);
-    console.log("THe id", id)
+    console.log("THe id", id);
     setshowList(false);
     setshowDelete(false);
     setshowNew(false);
@@ -187,7 +185,7 @@ const Todo = () => {
 
     settoggleSubmit(false);
     let newEditItem = items.find((elem) => {
-        return elem.id === id;
+      return elem.id === id;
     });
     setinputTitle(newEditItem.title);
     setinputDescription(newEditItem.description);
