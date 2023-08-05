@@ -1,42 +1,55 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css");
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.text-right {
+  text-align: right;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav .nav-left,
+.nav-right {
+  margin: 2px 20px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+nav .nav-left a {
+  font-size: 23px;
+  color: gray;
 }
-
-.card {
-  padding: 2em;
+nav a {
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
 }
-
-.read-the-docs {
-  color: #888;
+.Button {
+  display: flex;
+  justify-content: end;
+  margin: 20px !important;
+}
+.task-container {
+  border: 2px solid rgb(231, 212, 212);
+  margin: 8px;
+}
+.task-container .taskmeta {
+  /* border:2px solid rgb(184, 18, 18); */
+  display: flex;
+}
+/* .task_edit{
+  margin: 20px ;
+ } */
+.task_edit form {
+  display: flex;
+  flex-direction: column;
+}
+.task_edit form input,
+label,
+button {
+  margin: 5px 10px !important;
 }
